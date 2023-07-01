@@ -23,4 +23,7 @@ df.query("a > @BIGGER_FILTER")
 
 7) Converting string columns which are categorical to category type is a best practice. We can do this via `.astype('category')`
 
+8) [Yellowbrick](https://github.com/DistrictDataLabs/yellowbrick) is a Python library that has useful visualizations for ML.
+
+
 
