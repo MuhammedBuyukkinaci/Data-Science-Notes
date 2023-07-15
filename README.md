@@ -25,5 +25,18 @@ df.query("a > @BIGGER_FILTER")
 
 8) [Yellowbrick](https://github.com/DistrictDataLabs/yellowbrick) is a Python library that has useful visualizations for ML.
 
+# Machine Learning Design Patterns
+
+## The need for ML Design Patterns
+
+1) ML models can be expressed in SQL using Google's BigQuery ML. It supports classification, regression and clustering.
+
+2) Online prediction is useful if we care low latency. Batch prediction is useful if we don't care low latency.
+
+3) Recommendation systems rely on batch predictions.
+
+4) In Google's Big Query, Dataset is composed of many tables.
+
+5) Data Quality can be checked in terms of accuracy, completeness, consistency and timel
 
 
