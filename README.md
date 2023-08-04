@@ -156,8 +156,79 @@ Bias and variance are also called reducible error.
     - Measure the distance between predicted result and cluster centers.
     - If distance is high, label it as anomally.
 
-7) We can combine Downsampling and Class weights approach. We can also combine Downsampling with Ensemble can be carried out via building 9 different models on the data whose 90 percent is 0 and 10 percent is 0.
-`
+7) We can combine Downsampling and Class weights approach. We can also combine Downsampling with Ensemble can be carried out via building 9 different models on the data whose 90 percent is 0 and 10 percent is 1.
+
+## Model Training Patterns
+
+## Useful Overfitting
+
+1) "When building a machine learning model to learn such a physics model or dynamical system, there is no such thing as overfitting".
+
+2) Overfitting is useful when there is no noise and labels are correct.
+
+3) Overfitting on a batch of data is a reasonable way to check whether our code runs properly or not.
+
+## Checkpoints
+
+1) It is better to train more with regularization rather than an early-stopped model.
+
+## Transfer Learning
+
+1) [MLCommons](https://mlcommons.org/en/) is a website for Better Machine Learning
+for Everyone.
+
+2) [Tabnet](https://arxiv.org/pdf/1908.07442.pdf) is a work for transfer learning in tabular data.
+
+3) Sentence embedding is actually a form of transfer learning.
+
+4) When to use feature extraction and fine tuning in Transfer Learning
+
+![](./images/006.png)
+
+## Distribution Strategy
+
+1) There are 2 ways to distribute NN's. These are data parallelism and model parallelism. Generally data parallelism preferred. Data parallelism means splitting data into multiple workers(on the same device or not). Model parallelism means splitting ML model into multiple workers. One ML model may not fit into a single memory. Google's NMT has billions of parameters. Thus, it is required to split the ML model into many pieces. Convolution layers are used in data parallelism and fully connected layers are used in model parallelism.
+
+2) 2 types of training. Syncronous and Asyncronous. Syncronous training collects gradients from workers, averages them and obtains the new model with new weights and sends the new model to workers(GPU). One GPU might be bottleneck in this scenario. This is because we wait all workers to complete the mini-batch and send gradients back to parameter server.
+
+3) Distribution strategies in Tensorflow
+
+![](./images/007.png)
+
+4) PyTorch uses DistributedDataParallel independent on one-multiple machines or one-multiple gpus.
+
+5) Syncronous training
+
+![](./images/008.png)
+
+6) Asyncronous training
+
+![](./images/009.png)
+
+7) TPU's are ASIC's(application-specific integrated circuits). FPGA is Microsoft Azure's solution alternative to TPU's.
+
+8) Snycronous and Asnycronous overlapping between CPU's and GPU's/TPU's
+
+![](./images/010.png)
+
+## Hyperparameter Tuning
+
+1) "Hyperparameter tuning can be thought of as an outer optimization loop".
+
+2) A common use case is to use the best value for each potential hyperparameters.
+
+3) The goal of Bayesian optimization(BO) is to train as few as possible. BO defines a surrogate function that emulates our model but it is cheaper to run rather than model training.
+
+4) BO evaluates the past model information to select hyperparameter values to build the newer model
+
+5) Genetic algorithms are an alternative to bayesian optimization. However, genetic algorithms tend to require more training runs. Genetic algorithms are smarter than Random Search, Grid Search and Manual Search.
+
+# Design Patterns for Resilient Serving
+
+## Stateless Serving Function
+
+1) It is important to minimize number of stateful parts of an application.
+
 
 
 
