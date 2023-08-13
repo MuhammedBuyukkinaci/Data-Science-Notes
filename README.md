@@ -229,6 +229,123 @@ for Everyone.
 
 1) It is important to minimize number of stateful parts of an application.
 
+2) Allowing clients to send JSON requests with multiple instances in the request is called batching.
+
+3) Packaging ML app and serving it via a creating a web endpoint(FaaS) abstracts the specifics of our ML model.
+
+4) Stateless Serving is for low-latency serving.
+
+## Batch Serving
+
+1) Distributed data processing systems(MapReduce, Apache Spark, BigQuery, Apache Beam and so on) to carry out one-off predictions is not very efficient.
+
+2) Recommendation engines use batch serving.
+
+3) "[Lambda architecture](https://en.wikipedia.org/wiki/Lambda_architecture) is a data-processing architecture designed to handle massive quantities of data by taking advantage of both batch and stream-processing methods".
+
+## Continued Model Evaluation
+
+1) "The way people use credit cards has changed over time and thus the common characteristics of credit card fraud have also changed". This is concept drift.
+
+2) "[Online machine learning](https://en.wikipedia.org/wiki/Online_machine_learning) is a method of machine learning in which data becomes available in a sequential order and is used to update the best predictor for future data at each step, as opposed to batch learning techniques which generate the best predictor by learning on the entire training data set at once".
+
+3) A good way to learn retrain period is to predict new data using a former ML model and evaluate its performance. If error is bigger than expected, it requires more training.
+
+![](./images/011.png)
+
+## Two-Phase Predictions
+
+1) Quantization is the process of lowering the size of ML model. Tensorflow lite is a library to carry out this operation.
+
+2) An example is to use a voice assistance like Alexa. The ML model in the first phase is a small classifier to detect wake words(Hey, hello etc). The second is a bigger ML model used for complex tasks. The first model is on the edge device and the second model which is bigger will run in the cloud.
+
+3) NVIDIA's Jetson Nano and and Google's Coral Edge TPU are 2 corporate edge devices.
+
+## Keyed Predictions
+
+1) It is reasonable to supply a unique key with each example when making prediction requests.
+
+## Reproducibility Design Patterns
+
+## Transform
+
+## Repeatable Splitting
+
+1) "In the case of time-series models, a common approach is to use sequential splits of data"
+
+
+2) "Another instance where a sequential split of data is needed is when there are high correlations between successive times"
+
+3) The more the dataset, the less need for stratification.
+
+4) Some problems of low-performance ML models can be fixed via correcting data split.
+
+## Bridged Schema
+
+1) Let's assume that we are trying to predict how much tip to be given. Before our development, there were 2 payment options(cash and card) but we added 2 more options(gift card and meal card). It raised from 2 to 4. However, we don't have these new 2 options by splitting card into gift card, meal card and credit card. After our development, some little data accumulated but it isn't sufficient. New data shows that tips coming via card are 60 percent credit card, 25 percent mal card and 15 percent meal card. In order to use these 2 new payment methods in our old data, we can do one of the below ways:
+    - Probablistic method: Split former card payments into credit, meal and gift by its relative ratios on new data
+    - Static Method(Preferrable): All former payments to be encoded as [0, 0.6, 0.25, 0.15].
+
+2) Let's assume we have 2 datasets: old and new. Old data is 1000000 records and new data is 5000 records. We want to use some part of new data as evaluation set. However, we don't know how much to choose. In this scenario, we should run a loop like below to determine number of evaluation records. When standard deviation remains stable, the starting point of the stablity should be the exact number.
+
+```determine_evaluation.py
+for subset_size in range(100, 5000, 100):
+    sizes.append(subset_size)
+    # compute variability of the eval metric
+    # at this subset size over 25 tries
+    scores = []
+    for x in range(1, 25):
+        indices = np.random.choice(N_eval, 
+                           size=subset_size, replace=False)
+        scores.append(
+            model.score(df_eval[indices], 
+                        df_old.loc[N_train+indices, 'tip'])
+        )
+    score_mean.append(np.mean(scores))
+    score_stddev.append(np.std(scores))
+```
+
+![](./images/012.png)
+
+3) What about how many old data to select? In this situation, we should go for the same method. Select some subset of data and train the model and measure performance on evaluation set. When it starts to become a plateau, it might be the necessary training point.
+
+4) Another way is to impute null values in old data using ML.
+
+## Windowed Inference
+
+## Workflow Pipeline
+
+1) [Kubeflow pipeline- KFP](https://www.kubeflow.org/docs/components/pipelines/v1/introduction/) is an alternative to Apache Airflow. It is designed for ML.
+
+## Feature Store
+
+1) Feature store is "a centralized location to store and document feature datasets that will be used in building machine learning models and can be shared across projects and teams. The feature store acts as the interface between the data engineer’s pipelines for feature creation and the data scientist’s workflow building models using those features".
+
+2) A feature store can use Redis or Cassandra for online serving and Hive and BigQuery for training.
+
+3) [Feast](https://github.com/feast-dev/feast) is a feature store library. An example implementation is [here](https://github.com/GoogleCloudPlatform/ml-design-patterns/blob/master/06_reproducibility/feature_store.ipynb).
+
+![](./images/013.png)
+
+4) Feature Store decouples feature engineering from feature usage.
+
+5) Uber's Michelangelo is another alternative Feature Store solution. "Uber’s Michelangelo Palette is built around Spark/Scala using Hive for offline feature creation and Cassandra for online features".
+
+6) Some other solutions:
+
+    - [Hopsworks](https://github.com/logicalclocks/hopsworks). It is open source. It is using  Spark and pandas with Hive for offline and MySQL Cluster for online feature access
+    - Airbnb's Zipline
+
+## Model Versioning
+
+1) "To gracefully handle updates to a model, deploy multiple model versions with different REST endpoints"
+
+2) An ML engineer might want to use an API Gateway like Apigee that determines which model version to run.
+
+3) [Seldon](https://github.com/SeldonIO/seldon-core) is an open source platform to deploy your machine learning models on Kubernetes at massive scale.
+
+
+
 
 
 
