@@ -273,12 +273,13 @@ for Everyone.
 
 1) "In the case of time-series models, a common approach is to use sequential splits of data"
 
-
 2) "Another instance where a sequential split of data is needed is when there are high correlations between successive times"
 
 3) The more the dataset, the less need for stratification.
 
 4) Some problems of low-performance ML models can be fixed via correcting data split.
+
+5) Farm Fingerprint hashing algorithm is a way to split data into train, valid and test.
 
 ## Bridged Schema
 
@@ -344,8 +345,68 @@ for subset_size in range(100, 5000, 100):
 
 3) [Seldon](https://github.com/SeldonIO/seldon-core) is an open source platform to deploy your machine learning models on Kubernetes at massive scale.
 
+# Responsible AI
 
+## Heuristic Benchmark
 
+1) "The Heuristic Benchmark pattern compares an ML model against a simple, easy-to-understand heuristic in order to explain the model’s performance to business decision makers"
 
+2) The heuristic benchmark should be simple and understandable(mean, median, model). Don't use a heuristic benchmark if you have a running production model.
+
+## Explainable Predictions
+
+1) For interpratibility, a baseline for regression models is to use median values of input features like below
+
+`[151.0, 93.5, 2803.5, 15.5, 76.0, 1.0, 0.0, 0.0]`.
+
+2) SHAP is framework-agnostic and it works with image, text and tabular data.
+
+3) Cloud Service Providers have AI explainability tools.
+
+4) Integrated Gradients is another way for model interpratibility. It can be used with NN architectures. XRAI is another technique. IG is recommended for “non-natural” images like those taken in a medical, factory, or lab environment. XRAI usually works best for images taken in natural environment
+
+5) [facets](https://github.com/PAIR-code/facets) and [pygwalker](https://github.com/Kanaries/pygwalker) is an alternative to Pandas Profiling. [What if Tool](https://pair-code.github.io/what-if-tool/) is another data inspection library.
+
+6) [Lime](https://github.com/marcotcr/lime) and [eli5](https://github.com/eli5-org/eli5) are 2 libraries for ML explainability.
+
+## Fairness Lens
+
+1) "The Fairness Lens design pattern suggests the use of preprocessing and postprocessing techniques to ensure that model predictions are fair and equitable for different groups of users and scenarios"
+
+2) Different types of biases
+
+    - Reporting Bias: Vegeterian restaurant vs seafood restaurant
+    - Implicit Bias: Zipcode and Gender etc.
+    - Experimenter Bias: Labeller's annotation
+
+3) "ML models are a direct representation of the data used to train them"
+
+4) "It’s essential that our train, test, and validation splits maintain the same balance."
+
+5) "Another approach to minimizing model bias is to perform data augmentation".
+
+6) "Building on the ice cream example we used earlier in this section, the sentence “Mint chip is their best ice cream flavor” would become “BLANK is their best ice cream flavor” after applying ablation".
+
+# Connected Patterns
+
+1) The summary of design patterns
+
+![](./images/014.png)
+
+![](./images/015.png)
+
+![](./images/016.png)
+
+![](./images/017.png)
+
+![](./images/018.png)
+
+![](./images/019.png)
+
+2) The interactions between design patterns
+
+![](./images/020.png)
+
+3) Reframing and Cascade design patterns can be combined. Convert regression problem to a classfication problem. Build up your classifier. Then output of this  classifier can be fed into the  second model, which is a Regression model. The splitting of one problem into 2 models is called Cascade design pattern.
 
 
