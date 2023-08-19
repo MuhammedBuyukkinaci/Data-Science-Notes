@@ -403,9 +403,11 @@ for subset_size in range(100, 5000, 100):
 
 ![](./images/019.png)
 
+![](./images/020.png)
+
 2) The interactions between design patterns
 
-![](./images/020.png)
+![](./images/021.png)
 
 3) Reframing and Cascade design patterns can be combined. Convert regression problem to a classfication problem. Build up your classifier. Then output of this  classifier can be fed into the  second model, which is a Regression model. The splitting of one problem into 2 models is called Cascade design pattern.
 
