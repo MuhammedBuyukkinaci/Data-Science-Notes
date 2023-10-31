@@ -67,5 +67,56 @@ The notes on this markdown file are taken from Practical Recommender Systems boo
 
 # Chapter 2: User behavior and how to collect it
 
+1) 2 types of feedbacks
+
+- Explicit: Ratings or likes
+
+- Implicit: "Activity recorded by monitoring the user"
+
+2) The purposes of RS might be different
+
+- Amazon's purpose is to make people buy more
+
+- GAP's purpose is to make you like and not cause you to return it
+
+- Mofibo's(An online reader platform) purpose is let you open less books as much as possible.
+
+- Netflix's purpose is to make you watch more films, especially their own products.
+
+3) Event Lists on Netflix. An evidence collector is used to collect data like below.
+
+![](./images/006.png)
+
+4) A pageview can mean that the user is interested or it is lost in the website.
+
+5) Page Duration on a page can mean different things like below.
+
+![](./images/007.png)
+
+6) Expansion linkes can refer to an interest.
+
+![](./images/008.png)
+
+7) Sharing on Social Media can be attributed to interest of an item.
+
+![](./images/009.png)
+
+8) Add to playlist, favorite list, watchlist indicates an interest.
+
+9) Evidence collector(like xenn) should be a different app than our main app.
+
+10) An example data model of event collector
+
+![](./images/010.png)
+
+11) The following data model is useful and flexible.
+
+![](./images/011.png)
+
+12) The following data model is a standard model.
+
+![](./images/012.png)
+
+
 
 
