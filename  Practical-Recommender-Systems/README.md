@@ -117,6 +117,32 @@ The notes on this markdown file are taken from Practical Recommender Systems boo
 
 ![](./images/012.png)
 
+# Chapter 3. Monitoring the system
+
+1) We have to integrate an analytics app to measure the effect of RS.
+
+2) We can't build a RS with an analytics dashboard to keep an eye on things.
+
+3) Number of visitors, conversion rates, number of items sold are some important KPI's.
+
+4) A conversion funnel of Amazon
+
+![](./images/013.png)
+
+5) An analytics dashboard example
+
+![](./images/014.png)
+
+6) "Having a dashboard that shows you how your site is doing will be a great help when doing recommender systems".
+
+
+
+
+
+
+
+
+
 
 
 
