@@ -117,7 +117,7 @@ The notes on this markdown file are taken from Practical Recommender Systems boo
 
 ![](./images/012.png)
 
-# Chapter 3. Monitoring the system
+# Chapter 3: Monitoring the system
 
 1) We have to integrate an analytics app to measure the effect of RS.
 
@@ -134,6 +134,48 @@ The notes on this markdown file are taken from Practical Recommender Systems boo
 ![](./images/014.png)
 
 6) "Having a dashboard that shows you how your site is doing will be a great help when doing recommender systems".
+
+# Chapter 4: Ratings and how to calculate them
+
+1) General pipeline of a RS
+
+![](./images/015.png)
+
+2) Having read the previous chapters, you should have considered the following:
+
+- What’s the purpose of your site (the goals that you want users to achieve)?
+
+- What events lead up to these goals?
+
+- How many times has each of these events happened?
+
+3) User-Item matrix can be thought as a dataset whose rows correspond to users and columns correspond to items.
+
+![](./images/016.png)
+
+4) An explicit matrix can be plotted on the matrix.
+
+5) Amazon uses item-to-item recommendation algorithm because it has more than 200 million users. You can access to its details via [this link](https://www.cs.umd.edu/~samir/498/Amazon-Recommendations.pdf).
+
+6) Other websites can use browsing history of their users.
+
+7) An example of "Recommended For You" of New York Times
+
+![](./images/017.png)
+
+8) Relevance should be taken into consideration in order to implement a RS.
+
+9) Linkedin's "People You Know" and Facebook's "Friends Suggestion" are 2 RS based on implicit rating.
+
+10) In e-commerce, rating happens after buying. This makes things complicated.
+
+11) Time should be taken into consideration. More importance should be given to recent transactions/items.
+
+12) Several events like conversion, click, viewing details etc. needs to be combined to constitute a user-item matrix.
+
+13) In order to assign different weights to different events(details, moreDetails, genreView etc here), their impact on conversion should be taken into account.
+
+`IRi,u = (w1 × #event1) + (w2 × #event2) + ... + (wn × #eventn)`
 
 
 
