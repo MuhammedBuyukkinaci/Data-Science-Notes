@@ -1,5 +1,6 @@
 # Practical Recommender Systems
-The notes on this markdown file are taken from Practical Recommender Systems book.
+
+The notes on this markdown file are taken from [Practical Recommender Systems](https://www.goodreads.com/book/show/28510003-practical-recommender-systems?ac=1&from_search=true&qid=3Wyf6zSZ92&rank=1) book.
 
 # Chapter 1. What is a recommender?
 
@@ -171,11 +172,32 @@ The notes on this markdown file are taken from Practical Recommender Systems boo
 
 11) Time should be taken into consideration. More importance should be given to recent transactions/items.
 
+![](./images/019.png)
+
 12) Several events like conversion, click, viewing details etc. needs to be combined to constitute a user-item matrix.
 
 13) In order to assign different weights to different events(details, moreDetails, genreView etc here), their impact on conversion should be taken into account.
 
 `IRi,u = (w1 × #event1) + (w2 × #event2) + ... + (wn × #eventn)`
+
+![](./images/018.png)
+
+14) A music streaming platform like Spotify might give more importance to recent activities.
+
+15) "The thinking is that if a user buys an item that’s popular, it doesn’t provide much information about the user’s taste. If the same user likes something only few people like, then it could be a better indication of the personal taste of the consumer".
+
+16) Assigning more weights to less frequent items could boost our RS.
+
+![](./images/020.png)
+
+
+
+
+
+
+
+
+
 
 
 
