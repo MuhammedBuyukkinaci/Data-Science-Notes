@@ -239,6 +239,16 @@ The notes on this markdown file are taken from [Practical Recommender Systems](h
 
 13) "Online Consumer Behavior"  by Angeline G. is a book focusing on how users behave on the internet.
 
+# Chapter 6: The user (and content) who came in from the cold
+
+1) Some common connections if a user liked movie #1 in order to recommend movie #2
+
+![](./images/029.png)
+
+2) A solution to cold start problem by Netflix for new items.
+
+
+
 
 
 
