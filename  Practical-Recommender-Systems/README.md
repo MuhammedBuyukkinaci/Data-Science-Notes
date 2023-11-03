@@ -190,6 +190,60 @@ The notes on this markdown file are taken from [Practical Recommender Systems](h
 
 ![](./images/020.png)
 
+# Chapter 5: Non-personalized recommendations
+
+1) Coupon.com's non-personalized RS on mainpage. It recommends
+
+2) A simple RS is to order what people are most likely to favor. This might be price-oriented, recency-oriented. 
+
+3) Top 10 Food Restaurants on a meal website is a non-personalized RS. It was used in the past a lot.
+
+4) A RS has 2 components: builder(training) and serving(inference).
+
+5) A RS can be either memory-based or model based. Memory based RS can be challenging.
+
+6) Some websites have a fallback recommender in case of safety mechanism besides their main RS.
+
+7) It is a good practice to separate RS from the main app.
+
+8) Frequently Bought Together(FBT) is an example of seeded recommendations. "People who viewed this item also viewed these" is also seeded recommendation.
+
+9) FBT might not work well frequently. In addition to a rare item in a cart, there might be a popular item in a cart. Thus, popular item will be promoted irrespective of the content of the cart. This is challenging for FBT. Most people are buying milk from the supermarket. FBT will result in a boost in the recommendation of Milk.
+
+![](./images/021.png)
+
+10) Association rules in FBT
+
+![](./images/022.png)
+
+11) For a transaction like below, In order to find association rules, we should find frequency sets.
+
+![](./images/023.png)
+
+- Confidence: 
+
+![](./images/024.png)
+
+![](./images/025.png)
+
+- Support:
+
+![](./images/026.png)
+
+![](./images/027.png)
+
+
+12) A new type of recommendation: "What other items do customers buy after viewing this item?"
+
+![](./images/028.png)
+
+13) "Online Consumer Behavior"  by Angeline G. is a book focusing on how users behave on the internet.
+
+
+
+
+
+
 
 
 
