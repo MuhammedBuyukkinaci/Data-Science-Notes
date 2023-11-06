@@ -216,7 +216,7 @@ The notes on this markdown file are taken from [Practical Recommender Systems](h
 
 ![](./images/022.png)
 
-11) For a transaction like below, In order to find association rules, we should find frequency sets.
+11) For a transaction like below, In order to find association rules, we should find frequency sets. Association rules work with explicit ratings(buys etc) better than implicit ratings(clicks).
 
 ![](./images/023.png)
 
@@ -241,11 +241,55 @@ The notes on this markdown file are taken from [Practical Recommender Systems](h
 
 # Chapter 6: The user (and content) who came in from the cold
 
-1) Some common connections if a user liked movie #1 in order to recommend movie #2
+1) Cold start problem exists not only for new users but also for new items.
+
+2) Some common connections if a user liked movie #1 in order to recommend movie #2
 
 ![](./images/029.png)
 
-2) A solution to cold start problem by Netflix for new items.
+3) A solution to cold start problem by Netflix for new items.
+
+![](./images/030.png)
+
+4) Scientific papers state that personalized recommendations can't be calculated before a user rates 20 to 50 items.
+
+5) Amazon's "What other people are looking" is a recommendation method.
+
+6) Gray sheep can be considered as a unique user in terms of RS.
+
+7) A solution to cold-start problem is direct users to log in with Google and Facebook accounts.
+
+8) Sometimes, it is better to implement a business logic after recommendations. For example, RS in online movie market output a list of recommendation. The focus movie is a horror film and the recommendation is partially composing of sci-fi movies. It is better to drop sci-fi movies from the list.
+
+![](./images/031.png)
+
+9) Demographic Recommendations is to recommend content popular with that segment. It is an implementation of  semi-personalized RS.
+
+10) Some obvious segments 
+
+- Age
+
+- Gender
+
+- Location
+
+11) Some not-so-obvious segments
+
+- German women who browse in the evening during the weekend and like action
+
+- American male teenagers who buy horror films during school time
+
+12) A handy method to deal with cold start and sparsity in data is to abstract item into its category.
+
+![](./images/032.png)
+
+13) Improve your recommendations section by Amazon. It is implemented for logged-in users, not for anonymous users.
+
+14) "Active learning for recommender systems is about creating an algorithm that comes up with good examples for the user to rate, which then provides the recommender with valuable information about the person’s preferences.".
+
+15) Association rules can be used in personalized recommendations too. It is an easy and quick way to add personalization.
+
+16) Viewing a single item is sufficient to show "recommended for you" RS.
 
 
 
