@@ -285,11 +285,83 @@ The notes on this markdown file are taken from [Practical Recommender Systems](h
 
 13) Improve your recommendations section by Amazon. It is implemented for logged-in users, not for anonymous users.
 
+![](./images/033.png)
+
+
 14) "Active learning for recommender systems is about creating an algorithm that comes up with good examples for the user to rate, which then provides the recommender with valuable information about the person’s preferences.".
 
 15) Association rules can be used in personalized recommendations too. It is an easy and quick way to add personalization.
 
 16) Viewing a single item is sufficient to show "recommended for you" RS.
+
+# Chapter 7: Finding similarities among users and among content
+
+1) Clustering can halep in collaborative filtering.
+
+2) Netflix's More Like This rs
+
+![](./images/034.png)
+
+3) Similarity can be calculated among content and among users using different metrics.
+
+4) In the literature, few similarity functions are outputing good results.
+
+5) Similarity functions affect similarity scores
+
+![](./images/035.png)
+
+6) Different types of data: Unary data, Binary data, Quantitative data
+
+![](./images/036.png)
+
+7) Jaccard Similarity between 2 items on a user-item matrix
+
+![](./images/037.png)
+
+8) A simple Similarity score for one movie rating between 2 users. 
+
+![](./images/038.png)
+
+9) This can be called as L1-norm, manhattan distance or taxicab geometry. We just take absolute difference between 2 data points.
+
+![](./images/038.png)
+
+10) L2-norm known as Euclidean norm
+
+![](./images/039.png)
+
+11) Cosine similarity between 3 persons among 2 movies.
+
+![](./images/040.png)
+
+12) Amazon uses item to item collaborative filtering because the number of users is much more than the number of items on Amazon.
+
+13) Vanilla cosine similarity
+
+![](./images/041.png)
+
+14) Adjusted cosine similarity, which is normalized by average rating of user.
+
+![](./images/042.png)
+
+15) Pearson correlation, which ranges from -1 to 1.
+
+![](./images/043.png)
+
+16) Pearson correlation and adjusted cosine similarity are so close terms to each other. Adjusted cosine similarity takes items rated by either or both users, whereas pearson correlation takes items rated by only both users.
+
+17) We have to use clustering in order to compute user-user similarity efficiently.
+
+18) It is difficult to make Kmeans Clustering work correctly.
+
+19) User collaborative filtering Venn Diagram
+
+20) [Grouplens](https://grouplens.org/) is a research group in University of Minnesota.
+
+21) It is a good practice to filter 20-50 users in order to compute similarity metric(pearson correlation or cosine similarity or adjusted cosine similarity) rather than whole data.
+
+22) It is a good way to double check clustering with pearson correlation. The points in the same cluster should have a high pearson correlation pairly.
+
 
 
 
