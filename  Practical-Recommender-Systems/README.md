@@ -340,11 +340,11 @@ The notes on this markdown file are taken from [Practical Recommender Systems](h
 
 ![](./images/041.png)
 
-14) Adjusted cosine similarity, which is normalized by average rating of user.
+14) Adjusted cosine similarity, which is normalized by average rating of user. It ranges from -1 to +1.
 
 ![](./images/042.png)
 
-15) Pearson correlation, which ranges from -1 to 1.
+15) Pearson correlation, which ranges from -1 to +1.
 
 ![](./images/043.png)
 
@@ -354,13 +354,105 @@ The notes on this markdown file are taken from [Practical Recommender Systems](h
 
 18) It is difficult to make Kmeans Clustering work correctly.
 
-19) User collaborative filtering Venn Diagram
+19) User collaborative filtering Venn Diagram.
+
+![](./images/044.png)
 
 20) [Grouplens](https://grouplens.org/) is a research group in University of Minnesota.
 
 21) It is a good practice to filter 20-50 users in order to compute similarity metric(pearson correlation or cosine similarity or adjusted cosine similarity) rather than whole data.
 
 22) It is a good way to double check clustering with pearson correlation. The points in the same cluster should have a high pearson correlation pairly.
+
+# Chapter 8: Collaborative filtering in the neighborhood
+
+1) Collaborative Filtering(CF) is an umbrealla of methods. It also covers neighbor-based filtering. CF uses only ratings(explicit or implicity) as recommendation engines, which means no metadata is used. CF is content-agnostic.
+
+2) Amazon's "Recommended For You" is based on CF.
+
+3) Neighbor based filtering can be handled in 2 ways:
+
+- User based Filtering
+
+- Item based Filtering
+
+![](./images/045.png)
+
+4) User based CF pipeline
+
+![](./images/046.png)
+
+5) Item based CF Pipeline
+
+![](./images/047.png)
+
+6) If you want to calculate as few similarities as possible and you have much more users than items, you should prefer item-based filtering.
+
+7) In terms of serendipity, user-based filtering sounds more reasonable.
+
+8) In terms of explainibility, item-based filtering sounds more reasonable because it is easy to state that you may like this because you bought that etc. Whereas, user-based filtering is hard to explain while preserving privacy.
+
+9) "A way to implement collaborative filtering is by first finding all the items that are rated by several users (more than two users at least)"
+
+10) User who have rated only 1 or 2 items shouldn't be taken into consideration for CF. Users who rated lots of items may lead to too generalized recommendations.
+
+11) Clustering might be used to narrow down the search space.
+
+12) How to approach the similarity scores: Threshold or Top-N. Both have pros and cons.
+
+![](./images/048.png)
+
+13) Classification way and regression way for rating
+
+![](./images/049.png)
+
+14) Some of candidate items are recommended, this is based on finding item similarities and then computing ratings for each candidate.
+
+![](./images/050.png)
+
+15) How to compute the rating of a possible item for a user. Normalized user ratings must be used.
+
+![](./images/051.png)
+![](./images/052.png)
+
+16) In order to get the prediction rating of an item for a user, all possible candidates must be rated thanks to similarity scores. After calculating ratings, return top 10.
+
+17) Some ways to overcome cold start problems:
+
+- Let users rate a few items
+
+- Create a new arrivals list
+
+18) Another way to deal with cold start problem is exploit/explore strategy.
+
+![](./images/053.png)
+
+19) Online and offline serving
+
+![](./images/054.png)
+
+20) [`coo_matrix`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.coo_matrix.html) is a way to build a user-item matrix.
+
+![](./images/055.png)
+
+21) How rating is calculated after calculating similarities.
+
+![](./images/056.png)
+
+22) Some considerations while implementing CF
+
+![](./images/057.png)
+
+23) Some drawbacks of CF
+
+- Sparsity
+
+- Gray Sheep
+
+- Number of Ratings: We need many ratings to have a good CF model.
+
+- Similarity: CF follows users' behavioral trends. CF tends to put most popular items into recommendations often.
+
 
 
 
