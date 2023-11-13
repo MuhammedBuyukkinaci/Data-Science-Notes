@@ -453,23 +453,124 @@ The notes on this markdown file are taken from [Practical Recommender Systems](h
 
 - Similarity: CF follows users' behavioral trends. CF tends to put most popular items into recommendations often.
 
+# Chapter 9. Evaluating and testing your recommender
+
+1) Most people believe that evaluating recommendation engines is hard without a live system.
+
+2) Evaluation cycle of a RecSys
+
+![](./images/058.png)
+
+3) Starting with the simplest algorithm and then improving it is a recommended way.
+
+4) The followings are expected from a RS.
+
+- Understanding my taste: This can be measured by how often the recommender gets close to predicting the correct rating.
+
+- Diversity: [Improving Recommendation Diversity](https://www.academia.edu/2655896/Improving_recommendation_diversity) is an article on diversity. It means recommending more than popular items.
+
+- Coverage: A metric to measure how many percentage of users have recommendations & how many percentage of items are recommended. User catalogue and Item catalogue are different. 13% item coverage is regarded as bad.
+
+- Serendipity: [A paper on Serendipity](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.464.8494&rep=rep1&type=pdf). Serendipity means surprising users with recommendations.
+
+5) 3 types of evaluation. RS researchers believe that offline experiments not working, controlled user experiments and online experiments are too expensive.
+
+- Offline:
+
+![](./images/059.png)
+
+
+- Controlled user experiments:
+
+- Online Experiments:
 
 
 
+6) [Rethinking the Recommender Research Ecosystem: Reproducibility, Openness, and LensKit](https://files.grouplens.org/papers/p133-ekstrand.pdf) is a paper focusing on recommendation research ecosystem.
+
+7) There are 2 ways of measuring offline experiments.
+
+- Measuring error metrics: MAE, RMSE etc. "The difference between the ratings in your historical data set with what the recommender algorithm outputs"
+
+- Measuring decision-support metrics: Decision support is about taking each element and asking if the system was right or wrong
+
+8) For a RS, one of 4 scenarios exists for an item.
 
 
+- True Positive(TP): It is recommended and it is consumed
+- False Positive(FP): It is recommended but it is not consumed.
+- False Negative(FN): It isn't recommended but it is consumed.
+- True Negative(TN): It isn't recommended and it is not consumed.
 
+![](./images/060.png)
 
+9) Precision and Recall Calculation
 
+![](./images/061.png)
 
+10) Precision @k is a decision-support metric. "The k top elements are measured by taking the number of relevant items between the first k items". Precision at k isn't sufficient because it doesn't cover ranking, first recommended item has the same effect as last recommended item.
 
+![](./images/062.png)
 
+11) Mean Average Precision is a modified version of Precision @k. The below formula shows one calculation for one item. For all items, average it as in the second image below.
 
+![](./images/063.png)
 
+![](./images/064.png)
 
+12) NDCG(Normalized Discounted Cumulative Gain) is another metric. It takes care of relevance, which requires rating data rather than binary data. IDCG is Ideal Discounted Cumulative Gain. NDCG is between 0 and 1.
 
+![](./images/065.png)
 
+![](./images/066.png)
 
+13) In e-commerce, a user is expected to have 20 ratings in the website. This 20 threshold might be too high. It may be necessary to fine-tune it. It decreases the number of users taking recommendations from 50k to less than 10k if 20 threshold is applied.
+
+14) Splitting data into train, valid and test can be made based on user(favorable), random(problematic) or time based(most favorable).
+
+![](./images/067.png)
+
+15) Time based splitting
+
+![](./images/068.png)
+
+16) User based splitting
+
+![](./images/069.png)
+
+17) K-fold cross validation
+
+![](./images/070.png)
+
+18) Evaluation Pipeline
+
+![](./images/071.png)
+
+19) 1 out of 50, which is 0.02, might be considered as a good starting point for a recommendation engine.
+
+20) A new RS should be benchmarked against the following baselines:
+
+- Predict score: Items whose average rate are higher to be recommended as baseline
+
+- Top N: Most rated items to be recommended as baseline.
+
+21) Online evaluation can be carried out in the following ways
+
+- Controlled Experiments
+
+- Family and Friends
+
+- A/B testing
+
+![](./images/072.png)
+
+22) Exploit/explore strategy is used in Yahoo news.
+
+23) [Some slides](https://www.slideshare.net/justinbasilico/deja-vu-the-importance-of-time-and-causality-in-recommender-systems) on Netflix's RS
+
+24) "Whenusers accept these recommendations it creates a feedback loop in the recommender system, and these loops iteratively influence the collaborative filtering algorithm’s predictions over time". A [paper](https://proceedings.neurips.cc/paper_files/paper/2016/file/962e56a8a0b0420d87272a682bfd1e53-Paper.pdf) on this topic. Somehow, new contents should be introduced to this loop.
+
+![](./images/073.png)
 
 
 
