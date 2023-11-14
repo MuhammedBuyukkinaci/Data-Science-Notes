@@ -572,6 +572,80 @@ The notes on this markdown file are taken from [Practical Recommender Systems](h
 
 ![](./images/073.png)
 
+# Content-Based Filtering
+
+1) An example pipeline for CBF(Content Based Filtering). When item data is known and user data isn't known mostly, CBF is the way to go.
+
+![](./images/074.png)
+
+2) CBF Training and Inference respectively
+
+![](./images/075.png)
+
+![](./images/076.png)
+
+3) Metadata of an item can be regarded in 2 ways.
+
+- Facts: Non-changing realities. Example: Production year.
+
+- Tags: Interpreted. Example: Breaking the fourth wall.
+
+4) News articles are relevant for a short time. Thus, using CF doesn't make sense so much.
+
+5) In order to build a Bag Of Words(BOW) model, it is advised to remove stopwords.
+
+6) It is a good practice to remove high-frequency words due to noise introduced and low-frequency words due to complexity introduced.
+
+7) Stemmer or Lemmatizer should be used to find the base of the word. "Better" turns to "good" in lemmatizer and "better" remains "better" in stemmer.
+
+8) Latent Dirichlet allocation(LDA) is much more preferrable over TF-IDF.
+
+9) LDA and Word2vec models are usually used for different things.
+
+10) LDA decomposition
+
+![](./images/077.png)
+
+11) LDA example
+
+![](./images/078.png)
+
+12) LDA takes a document and represents it as a combination of different topics. Each topic has different words.
+
+![](./images/079.png)
+
+13) The media company [Issuu](https://issuu.com), for example, uses an LDA model to offer recommendations.
+
+14) Finding an optimal K (number of topics) is hard. Lower K means too many documents will look like each other. If K is too big, it is hard to find a similar document. [pyLDAvis](https://pyldavis.readthedocs.io/en/latest/readme.html) is a library to visualize LDA results.
+
+15) Alpha an Beta are 2 parameters for LDA. The bigger the alpha, the more topics a document is assigned. The more the beta, the more words assigned to a topic. Be careful when tuning alpha and beta.
+
+16) After obtaining LDA model, "You can calculate their similarity. Because the probability distribution can be seen as vectors, many use cosine similarity for their calculations".
+
+17) In terms of cold start problem, CBF is better.
+
+18) A user who rated La La Land as 3 points and Raiders of the Lost Ark as 5 points. His user profile is created by multiplying the base vectors with ratings. Then this summation is normalized(not included in the image)
+
+![](./images/080.png)
+
+19) MAP(Mean Average Precison) is the metric CBF can use.
+
+20) The performance of CBF is worse than CF on moviegeeks data. This is probably due to the nature of the problem, which is composed of user ratings.
+
+21) The coverage of CBF, which is being able to recommend items for items, is higher than CF.
+
+22) "Evaluating content-based recommenders can be done by dividing each user’s ratings into training and testing data (as you learned in chapter 9). Then run through each user and calculate the recommendations to see if it produced something that was in the test set".
+
+23) CBF isn't good for serendipity.
+
+
+
+
+
+
+
+
+
 
 
 
