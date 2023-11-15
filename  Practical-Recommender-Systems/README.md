@@ -638,15 +638,174 @@ The notes on this markdown file are taken from [Practical Recommender Systems](h
 
 23) CBF isn't good for serendipity.
 
+# Chapter 11: Finding hidden genres with matrix factorization
 
+1) We will explore latent factors.
 
+2) Simon Funk's solution on Netflix Competition became popular. Click [here](https://sifter.org/~simon/journal/20061211.html) for more information.
 
+3) In order to work with rating matrix, behavioral data or implicit ratings should be converted into ratings.
 
+4) In SVD, it is easy to add new users but terribly slow to calculate SVD if you have a larger dataset.
 
+5) "The basic idea is that by looking at the behavioral data of users, you can find categories or topics that let you explain users’ tastes with much less granularity than with each movie but more detail than genres"
 
+6) An illustration of SVD on 2-dimensions. Second dimension(y) is about being serious but first dimension(x) is unassigned.
 
+![](./images/081.png)
 
+7) Dimensionality Reduction rarely works. Use a vector space as a box that you ask about similarity among users and items.
 
+8) Filling the matrix with 0 isn't the best option.
+
+9) Matrix multiplication illustrated
+
+![](./images/082.png)
+
+10) Factorization is splitting thing up.
+
+11) UV Decomposition. U is user matrix with the shape of (n,d) and V is item matrix with the shape of (d,m). We need to insert reasonable values into U and V matrices in order to be as close as possible to R.
+
+![](./images/083.png)
+
+12) SVD is another decomposition technique. It uses 3 matrices instead of 2. Σ is a diagonal matrice in the shape of mxm or nxn. The diagonals are sorted decreasingly. The value in a diagonal shows importance in the decompositon. If there are 5 values in a Σ matrix and the diagonals are [20,10,8,7,5], the diagonals covering at least 90 percent of the summation should be selected orderly, which is [20,10,8,7]. That means that 5th dimension is ignored. In the below example, 4 out of 6 dimensions are considered as important.
+
+![](./images/084.png)
+
+![](./images/085.png)
+
+13) Σ can be fed into U and Vt by multiplying U with square root of Σ and multiplying Vt with square root of Σ. Hereby, Σ's shape is reduced to k(4) and the number of matrices(U, Σ, Vt) are reduced to 2(U, Vt). After obtaining U and Vt, we can calculate the rating of a user for an item.
+
+```python
+def rank_k2(k):                                           
+    U_reduced= np.mat(U[:,:k])
+    Vt_reduced = np.mat(Vt[:k,:])
+    Sigma_reduced = Sigma_reduced = np.eye(k)*Sigma[:k]
+    Sigma_sqrt = np.sqrt(Sigma_reduced)                   
+    return U_reduced*Sigma_sqrt, Sigma_sqrt*Vt_reduced
+
+U_reduced, Vt_reduced = rank_k2(4)                        
+
+M_hat = U_reduced * Vt_reduced  
+```
+
+![](./images/086.png)
+
+14) User-item matrix is a sparse matrix whose density is lower than 1 percent. Thus, empty values should be handled. 2 ways to handle are below.
+
+- Imputation with the mean of user or item
+- Normalizing each rows, all rows are centered around 0. The zeros will become the average.
+
+15) We know Σ and Vt. If a user has some ratings, We can insert it into M matrice and deduce his profile via the formula.
+
+![](./images/087.png)
+
+![](./images/088.png)
+
+16) How to calculate the hidden representation a new item if it was rated by some users
+
+![](./images/089.png)
+
+17) "It’s important to update the SVD as often as possible. Depending on how many new users and items you have, you should do it once a day or once a week"
+
+18) How to provide recommendations with SVD
+
+- Calculate all predicted ratings and take the largest ones that the user didn't see before
+
+- Iterate through each item and find similar products in the reduced space
+
+- Calculate neighborhood CF on M thanks to its dense content. Find similar users or similar items.
+
+19) Some cons of SVD
+
+- Requiring an imputation approach for empty cells
+
+- Slow
+
+- SVD is static, therefore it is required to update as often as possible.
+
+- Not explainable
+
+20) Some pros of SVD
+
+- It is easy to handle new users and items
+
+21) [Application of Dimensionality Reduction in Recommender System](https://files.grouplens.org/papers/webKDD00.pdf) is a paper suggested by the author.
+
+22) Baseline prediction for a user-item pair
+
+![](./images/090.png)
+
+23) The way to compute global bias,user bias and item bias
+
+- Calculate global mean
+
+- Calculate user bias
+
+- Calculate item bias
+
+- Fill empty values on user-item matrix with global mean, user bias and item bias
+
+![](./images/091.png)
+
+![](./images/092.png)
+
+```python
+global_mean = M[M>0].mean().mean()                               
+M_minus_mean = M[M>0]-global_mean                                
+user_bias = M_minus_mean.T.mean()                                
+item_bias = M_minus_mean.apply(lambda r: r - user_bias).mean()
+```
+
+24) An example of calculated user bias and item bias
+
+![](./images/093.png)
+
+25) If all goals are avhieved, it might to okey to add time aspect to bias formula
+
+![](./images/094.png)
+
+26) Funk SVD is also named as regularized SVD and it is an alternative to SVD. Instead of using whole matrix, it uses only things we need to know. It uses gradient descent to constitute U an Vt matrices. In Funk SVD, we don't have Sigma matrix(Σ). Before starting calculations, it is required to decide the hidden vector size.
+
+27) It is required to shuffle list of ratings because trends in ratings may result in absurdities in the optimization process.
+
+28) A predicted rating is a combination of these four things
+
+![](./images/095.png)
+
+29) Simon Funk's hyperparameters are 0.001 as learning rate, 0.02 as regularization and 40 as hidden vector for factorization in the Netflix Prize competition.
+
+30) 150 iterations can be used as number of iterations.
+
+31) After obtaining User Factor Matrix, Item Factor Matrix, Item Bias and User bias,  the followings are the ways to offer recommendations
+
+- Brute Force: Recommend possibly most-ranking predictions according to the formula below
+
+![](./images/096.png)
+
+- Neighborhood Recommendation Calculation: Offer recommendations from the cluster you defined.
+
+- User vector: Finding items whose factor vectors are close to active user's vector. However, user's factor vector is a sum of the items he like. For instance, a user might like American Westerns and Polish Drama movies. The user will be located at the point between American Wsterns and Polish dramas, which might be close to Irish comedies that the user probably doesn't like.
+
+![](./images/097.png)
+
+- Finding items closer to items that user likes
+
+- Finding favorable tems of users that the active user is close to.
+
+![](./images/098.png)
+
+32) It is necessary to keep the model up-to-date daily or weekly.
+
+33) Alternating least squares can be used instead of gradient descent.
+
+34) [implicit](https://github.com/benfred/implicit) is a python library focusing on implicit data usage in RS.
+
+35) When Funk SVD is implemented on movielens data, its user coverage is 100% and its item coverage is 11%. Funk SVD outperformed CBF but Neighborgood CF outperformed Funk SVD.
+
+36) Regularization keeps latent vectors close to 0.
+
+37) Item bias and user bias should be scaled. For movielens dataset, the ratings range from 1 to 10. The average rating is 7, item bias and user bias shouldn't be too much above 1.5.
 
 
 
