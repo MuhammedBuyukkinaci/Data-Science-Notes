@@ -807,6 +807,63 @@ item_bias = M_minus_mean.apply(lambda r: r - user_bias).mean()
 
 37) Item bias and user bias should be scaled. For movielens dataset, the ratings range from 1 to 10. The average rating is 7, item bias and user bias shouldn't be too much above 1.5.
 
+38) Final RS with Association Rules, CF, CBF and Funk-SVD based MF
+
+![](./images/109.png)
+
+# Chapter 12: Taking the best of all algorithms: Implementing hybrid recommenders
+
+1) 3 different types of Hybrid Recommenders
+
+![](./images/099.png)
+
+2) Monolithic recommender means containing parts of different RS.
+
+3) Output of CBF can be personalized with neighborhood CF.
+
+![](./images/100.png)
+
+4) RS can be placed on a personalization dimension. The most personalized RS will output 1 or 2 recommendations. The least personalized RS is to recommend most popular items. Mixed Hybrid Recommender is visualized below.
+
+![](./images/101.png)
+
+5) Ensemble recommender is combining predictions from different recommenders.
+
+![](./images/102.png)
+
+6) It is advised to start with a MF solution first and then continue to ensemble different algorithms.
+
+7) Switched ensemble recommender is about changing RS based on location, time, rate count, login status etc.
+
+![](./images/103.png)
+
+8) Weighted ensembler recommender
+
+![](./images/104.png)
+
+9) Instead of pre-set weights like above, linear regression can be used to determined weights of different RS.
+
+10) Feature-weighted linear stacking is visualized below. Weights are replaced with functions.
+
+![](./images/105.png)
+
+11) Netflix prize mtadata functions
+
+![](./images/106.png)
+
+12) Feature-weighted linear stacking with 2 RS and each having 2 functions
+
+![](./images/107.png)
+
+13) FWLS Training pipeline
+
+![](./images/108.png)
+
+14) It is a good practice to have 5*Top-N larger than what the user is requesting.
+
+15) Output of Hybrid RS
+
+![](./images/110.png)
 
 
 
