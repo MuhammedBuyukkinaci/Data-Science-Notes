@@ -865,10 +865,53 @@ item_bias = M_minus_mean.apply(lambda r: r - user_bias).mean()
 
 ![](./images/110.png)
 
+# Chapter 13: Ranking and learning to rank
 
+1) "Learning to rank is a way to combine different kinds of data sources, such as popularity, distance, or recommender system outputs".
 
+2) Some features used in Foursquare's ranking algorithm.
 
+![](./images/111.png)
 
+3) Simplified version of Foursquare's ranking algorithm.
+
+![](./images/112.png)
+
+4) Projecting the points(2D) into a line, which shows an ordering of the items.
+
+![](./images/113.png)
+
+5) Hybrid recommender predics ratings, whereas learning to rank produces rankings.
+
+6) CF has no concept of popularity. It could be used for re-ranking instead of the only source of the ordering. For more info, click [here](https://netflixtechblog.com/netflix-recommendations-beyond-the-5-stars-part-2-d9b96aa399f5).
+
+7) "Instead of re-ranking items and rating predictions", another type of problem called Learning to Rank can be used. The ranking is done using a ranking model. It is a supervised learning algorithm. Input is user_id and output is ranked list of items. 3 types of LTR algoritms
+
+- Pointwise: Producing a score for each item and ranks them accordingly.
+
+- Pairwise: Taking 2 items and returning an ordering of these 2 items. It requires absolute ordering. Bayesian Personalized Ranking is a pairwise ranking.
+
+- Listwise: It is the king of LTR subgroups.
+
+![](./images/114.png)
+
+8) Bayesian Personalized Ranking(BPR) requires all rankings to be different than each other. BPR only works often on implicit data.
+
+9) User-item relationship dilemma
+
+![](./images/115.png)
+
+10) Transforming a user who made 2 purchases out of 5 items into a ranking item-item matrix
+
+![](./images/116.png)
+
+11) This transformating is done for each user separately.
+
+![](./images/117.png)
+
+12) If data is explicit, it can also be transformed. If a user rated 5 for item1 and 4 for item2, item1 > item2. 
+
+13) BPR is built on top of recommendation algorithm chosen. Generally, MF algorithms are used.
 
 
 
