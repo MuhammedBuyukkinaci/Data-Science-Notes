@@ -913,6 +913,40 @@ item_bias = M_minus_mean.apply(lambda r: r - user_bias).mean()
 
 13) BPR is built on top of recommendation algorithm chosen. Generally, MF algorithms are used.
 
+# Chapter 14
+
+1) "More data beats more complex algorithm"
+
+2) Microsoft's SaaS solution for RS is [here](https://learn.microsoft.com/en-us/industry/retail/intelligent-recommendations/overview). Some RS scenarios are below:
+
+- New: Returns a list of the newest products that have been recently assorted to channels and catalogs.
+
+- Popular: Returns a list of products ranked by the highest number of sales.	
+
+- Trending: Returns a list of the highest performing products for a given period, ranked by highest number of sales.
+
+- Frequently bought together: Returns a list of products that are commonly purchased together (complementary) with the contents of the consumer's current cart.	
+
+- People also like: Returns products for a given seed product based on consumer purchase patterns. Can be changed based on consumer action (purchase, views).
+
+- Picks for you: Returns a personalized list of products based on purchase patterns of the signed-in user. For an anonymous guest user, this list is collapsed.	
+
+- Shop similar looks: Returns a list of products with visually similar images.	
+
+- Shop similar by description: Returns a list of products with textually similar content descriptions.
+
+3) There are companies which generate profiles about users.
+
+4) How contenxt can be visualized
+
+![](./images/118.png)
+
+5) "Next Best Action recommenders are becoming bigger and bigger in marketing and banking"
+
+6) To have a general knowledge on context-aware RS, take a look at [here](https://www.researchgate.net/publication/220605653_Context-Aware_Recommender_Systems).
+
+
+
 
 
 
