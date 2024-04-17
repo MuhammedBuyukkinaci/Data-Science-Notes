@@ -374,7 +374,7 @@ git commit -m "Initialize DVC"
 
 ## Video 11 - Hands on - Build a Recommender system: Camille Couturier 
 
-![Video 10 Cover](./images/011/000.png)
+![Video 11 Cover](./images/011/000.png)
 
 [Video Link](https://www.youtube.com/watch?v=juU7m9rOAqo)
 
@@ -422,15 +422,33 @@ R = P.Qt
 
 17) User Features and item features can be concatenated to train a NN.
 
+## Video 12 - Embeddings! Embeddings everywhere! Maciej Arciuch, Karol Grzegorczyk
 
+![Video 12 Cover](./images/012/01.png)
 
+[Video Link](https://www.youtube.com/watch?v=muXTMnfPU0k)
 
+1) Faiss is a python library to find nearest neigbors of a query item. It finds the centroids of the clusters first. Then find the closest centroids to a query centroid. Then, find the neigbors of a query item among the closest clusters.
 
+2) Reranking can be applied after finding the nearest neigbors. It improves the results. A pairwise ranking algorithm named LambdaMart improves the ranking.
 
+3) 33 different places exist in Allegro(a popular e-commerce website) to locate recommendations such as product detail, listing, mainpage.
 
+4) It is a good practice to put similar produts on product detail page. It is a good practice to put complementary product on cart page and after-buy emails.
 
+5) The training procedue for recommendations of product detail and cart detail differ because our purposes on these pages are different.
 
+6) When a new product is created in the website, the existing popular products are used to find the closes popular items to the new product. After finding the popular product, its precomputed similar products are shown on the product detail page of the new product.
 
+6) Item to item recommendations are used in product detail page. Item to use recommendations are used for emails and main page.
+
+7) Different approaches and pros and cons of each of user-item recommendations. The chosen approach is 3.
+
+![](./images/012/02.png)
+
+8) [Hyperparameters matter](https://arxiv.org/abs/1804.04212) is an important paper to tune hyperparameters.
+
+9) The distribution of sales is having a long tail. Thus, most of the offers(a product can be offered by multiple sellers) aren't even sold. This complicates things and introduces noise. Thus, less-sold products are merged and led to a denser interaction matrix.
 
 
 
