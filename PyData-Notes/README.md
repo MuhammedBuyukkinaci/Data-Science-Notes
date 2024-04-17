@@ -448,7 +448,7 @@ R = P.Qt
 
 8) [Hyperparameters matter](https://arxiv.org/abs/1804.04212) is an important paper to tune hyperparameters.
 
-9) The distribution of sales is having a long tail. Thus, most of the offers(a product can be offered by multiple sellers) aren't even sold. This complicates things and introduces noise. Thus, less-sold products are merged and led to a denser interaction matrix.
+9) The distribution of sales is having a long tail. Thus, most of the offers(a product can be offered by multiple sellers) aren't even sold. This complicates things and introduces noise. Thus, less-sold products are merged to a single product according to title, category etc. This led to a denser interaction matrix.
 
 
 
