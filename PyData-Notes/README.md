@@ -450,9 +450,23 @@ R = P.Qt
 
 9) The distribution of sales is having a long tail. Thus, most of the offers(a product can be offered by multiple sellers) aren't even sold. This complicates things and introduces noise. Thus, less-sold products are merged to a single product according to title, category etc. This led to a denser interaction matrix.
 
+## Video 13 - Fletcher Riehl: Using Embedding Layers to Manage High Cardinality Categorical Data | PyData LA 2019
 
+![Video 13 Cover](./images/013/01.png)
 
+[Video Link](https://www.youtube.com/watch?v=icmjDyNaj2E)
 
+1) Interpretability and Explainability are 2 different terms. When things get complex, interpretability is sacrificed to fulfil performance.
+
+![](./images/013/02.png)
+
+2) Some features to be extracted from a date object
+
+![](./images/013/03.png)
+
+3) Various techniques for target encoding
+
+![](./images/013/04.png)
 
 
 
