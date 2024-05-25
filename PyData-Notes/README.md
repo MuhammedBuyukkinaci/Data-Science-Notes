@@ -468,6 +468,42 @@ R = P.Qt
 
 ![](./images/013/04.png)
 
+## Video 14 - Fletcher Riehl: Using Embedding Layers to Manage High Cardinality Categorical Data | PyData LA 2019
+
+![Video 14 Cover](./images/014/01.png)
+
+[Video Link](https://www.youtube.com/watch?v=9vBRjGgdyTY)
+
+1) Spotify weekly is a batch operation. It brings musics to our main page or mail box. Spotify uses Cassandra.
+
+2) From BI to AI. Tiktok is on of the best companies that leverages personalization.
+
+![](./images/014/02.png)
+
+3) Hopsworks is a python centric feature store.
+
+![](./images/014/03.png)
+
+4) Most famous batch recommendations and how they work.
+
+![](./images/014/04.png)
+
+![](./images/014/06.png)
+
+5) Most famous real time recommendations and how they work. Retrieval and ranking comes from youtube.
+
+![](./images/014/05.png)
+
+![](./images/014/07.png)
+
+8) Train with two tower networks, Retrieve via Approximate nearest search, Filter based on business rules and rank all candidates.
+
+![](./images/014/08.png)
+
+
+
+
+
 
 
 
