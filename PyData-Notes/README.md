@@ -500,6 +500,42 @@ R = P.Qt
 
 ![](./images/014/08.png)
 
+9) An article on system design for discovery: https://eugeneyan.com/writing/system-design-for-discovery/
+
+10) Network architecture for two tower networks
+
+![](./images/014/09.png)
+
+11) Ranking model. Ranking model should predict fast because it will run in real time. Generally, tree based models are chosen.
+
+![](./images/014/10.png)
+
+12) [Kserve](https://github.com/kserve/kserve) is defacto serving framework for kubernetes.
+
+13) How retrieval and ranking works at inference. When a prediction is presented to the user, the feedback is created in order for labeling further training data.
+
+![](./images/014/11.png)
+
+14) It requires low latency for feature store. Thus, in memory databases such as redis are used in feature stores behind the scenes. RonDB and Aerospike are used in spotify. RonDB with 6 nodes is able to handle 2 million operations per second.
+
+15) User features such as age, gender are used for user input. Category of item and gender of item are used for item input. After integrating these with embedding layers of users and items, train the model with interactions of purchases. For evaluation on validation data, look at whether the predicted item is in the range of top closest 100 items.
+
+16) After training, embeddings are computed. Then, embeddings are indexed on opensearch. On opensearch, faiss is an engine.
+
+![](./images/014/12.png)
+
+17) Used data for ranking
+
+![](./images/014/13.png)
+
+18) For ranking models, more metadata features can be integrated for better performance.
+
+19) After creating positive data from input and user features, shuffle it to generate negative data. 10 negative samples for 1 positive sample is a good ratio.
+
+20) Deployment architecture
+
+![](./images/014/14.png)
+
 
 
 
