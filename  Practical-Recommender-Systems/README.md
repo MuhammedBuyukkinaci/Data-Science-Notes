@@ -945,8 +945,16 @@ item_bias = M_minus_mean.apply(lambda r: r - user_bias).mean()
 
 6) To have a general knowledge on context-aware RS, take a look at [here](https://www.researchgate.net/publication/220605653_Context-Aware_Recommender_Systems).
 
+# More
 
+1) Gradient Descent, SVD and Weighted Alternating Least Sqaures(WALS) are optimization techniques used in the context of Recommendation Engines.
 
+    - Gradient Descent: A general iterative optimization method suitable for a wide range of problems, but requires careful tuning and can be slow to converge.
+    - SVD: A direct matrix factorization technique that provides exact results, but can be computationally expensive and less suitable for very large or sparse datasets.
+    - WALS: A specific matrix factorization method tailored for collaborative filtering, especially effective for implicit feedback, and handles large-scale sparse datasets efficiently.
 
+2) Neural Collaborative Filtering. It is a network of 2 branches. Left branch is based on matrix factorizations. Right branch is based on MLP's. 4 different embedding layers are used. User MF embedding layer, Item MF embedding layer, User MLP embedding layer, Item MLP embedding layer. 
+
+![](./images/119.png)
 
 
