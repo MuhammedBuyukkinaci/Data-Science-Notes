@@ -536,6 +536,48 @@ R = P.Qt
 
 ![](./images/014/14.png)
 
+## Video 15 - Applied Machine Learning for Ranking Products in an Ecommerce Setting Arnoud de Munnik Wehkamp Jerry
+
+![Video 15 Cover](./images/015/01.png)
+
+[Video Link](https://www.youtube.com/watch?v=6BGCn3h59nA&ab_channel=Databricks)
+
+1) NDCG can be used to evaluate the performance of products.
+
+2) True Relevancy score can be assigned via
+
+- Price
+- Title match
+- Consumer reviews
+- Article Match
+
+![](./images/015/02.png)
+
+3) Ranking problem consists of 2 main blocks:
+
+- Get relevancy scores
+- Define some features and weight them.
+
+4) The pipeline
+
+![](./images/015/03.png)
+
+5) Click Over Expected Click(COEC) is used. The input is impression@position k from 1 to 10 and the output is the number of clicks.
+
+![](./images/015/04.png)
+
+6) The output of COEC. While training random data is added to increase distinguishing. A linear model can be used here for ML model to obtain expected clicks. DBN(Dynamic Bayesian Network) is an alternative to COEC.
+
+![](./images/015/05.png)
+
+7) After obtaining relevancy scores, generate features as input to predict the relevancy score, which is output.
+
+![](./images/015/06.png)
+
+8) Elasticsearch has a plugin that supports XGBOOST.
+
+9) It is plausible to have different models for different categories. Showcase image can be much more important for fashion rather than electronics.
+
 
 
 
