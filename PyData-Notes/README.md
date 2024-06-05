@@ -578,11 +578,37 @@ R = P.Qt
 
 9) It is plausible to have different models for different categories. Showcase image can be much more important for fashion rather than electronics.
 
+# Video 16: Conversion Models: Building Learning to Rank Training Data - Doug Turnbull, OpenSource Connections
 
+![Video 15 Cover](./images/016/01.png)
 
+[Video Link](https://www.youtube.com/watch?v=33QDCpZmR-E&ab_channel=Lucidworks)
 
+1) Implicit data might be deceptive. Search engines can fall into the trap of self reinforcing bad search due to the followings:
 
+- Position Bias: First ordered items get clicked more.
 
+- Presentation Bias: Relevant items which aren't displayed seemed to be clicked less.
+
+![](./images/016/02.png)
+
+2) Good abandonment is term in search. It means that user gets satisfied unless he clicks or converts.
+
+3) Different opinions on how to evaluate click data
+
+- Clicking and spending more than 5 seconds are important.
+
+- Oversample clicks farther down the page to eliminate position bias
+
+- Carefully inspecting a product is a type of relevance.
+
+4) We shouldn't take 1 metric only into consideration. We should reach a consensus on 3 metrics as a best practice.
+
+5) CTR is number of clicks/number of impressions. It is completely dominated by position bias.
+
+6) COEC means click over expected clicks. It is CTR/Average CTR for position n. COEC is better than CTR. The evaluation point of COEC is 1. The bigger the COEC, the better the results.
+
+![](./images/016/03.png)
 
 
 
