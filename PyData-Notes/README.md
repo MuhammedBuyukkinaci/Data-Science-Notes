@@ -580,7 +580,7 @@ R = P.Qt
 
 # Video 16: Conversion Models: Building Learning to Rank Training Data - Doug Turnbull, OpenSource Connections
 
-![Video 15 Cover](./images/016/01.png)
+![Video 16 Cover](./images/016/01.png)
 
 [Video Link](https://www.youtube.com/watch?v=33QDCpZmR-E&ab_channel=Lucidworks)
 
@@ -610,5 +610,21 @@ R = P.Qt
 
 ![](./images/016/03.png)
 
+# Video 17: How to Kill Two Birds with One Stone: Learning to Rank with Multiple Objectives by Alexey Kurennoy
 
+![Video 17 Cover](./images/017/01.png)
+
+[Video Link](https://www.youtube.com/watch?v=nCtM4Xg7e4k&ab_channel=OpenSourceConnections)
+
+1) A customized NDCG
+
+![](./images/017/02.png)
+
+2) Multi objective optimization
+
+![](./images/017/03.png)
+
+3) Relevance can be redefined based on category & interaction combination.
+
+![](./images/017/03.png)
 
